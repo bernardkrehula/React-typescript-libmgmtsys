@@ -4,6 +4,7 @@ import Books from './components/Books/Books'
 import Members from './components/Members/Members'
 import Menu from './components/Menu/Menu'
 import DefaultPage from './components/DefaultPage/DefaultPage'
+import Book from './components/Books/Book/Book'
 
 function App() {
 
