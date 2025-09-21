@@ -1,7 +1,7 @@
 .login-window{
     text-align: center;
     margin: 30px auto;
-    width: fit-content;
+    width: 458px;
 }
 .login-window h1{
     font-size: 3.5rem;
@@ -30,4 +30,39 @@
 }
 .login-inputs-btn button{
     margin-top: 10px;
+}
+.login-info{
+    display: flex;
+    width: fit-content;
+    margin: 0 auto;
+    width: fit-content;
+    background-color:  rgba(129, 192, 255, 0.237);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+.info-svg{
+    height: 25px;
+    fill: rgb(25, 118, 210);
+    margin-right: 10px;
+}
+.login-info div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: rgb(1, 67, 97);
+}
+.login-info h3{
+    float: left;
+    font-size: 1.5rem;
+    margin-bottom: -2px;
+}
+.login-info h4{
+    display: inline;
+    float: left;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-top: 20px;
+}
+.login-info span{
+    font-weight: 700;
 }
