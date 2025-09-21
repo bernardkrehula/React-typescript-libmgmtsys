@@ -1,11 +1,29 @@
 .login-window{
     text-align: center;
-    margin: 50px auto;
+    margin: 30px auto;
+    width: fit-content;
 }
 .login-window h1{
-    font-size: 3.7rem;
+    font-size: 3.5rem;
+    font-weight: 500;
+}
+.login-window h2{
+    margin-top: 10px;
+    font-size: 2.3rem;
     font-weight: 500;
 }
 .login-photo{
-    height: 100px;
+    height: 40px;
+    background-color: rgb(156, 39, 176);
+    border-radius: 100%;
+    padding: 7px;
+    fill: white;
+    margin-top: 40px;
+}
+.login-inputs{
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    flex-direction: column;
+    padding: 0 30px;
 }

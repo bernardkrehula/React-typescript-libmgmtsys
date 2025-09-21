@@ -4,7 +4,7 @@ import type { MouseEventHandler } from "react"
 type BtnTypes = {
     variation: string;
     children: string;
-    onClick: MouseEventHandler<HTMLButtonElement>
+    onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
 const Btn = ({variation, onClick, children}: BtnTypes) => {
