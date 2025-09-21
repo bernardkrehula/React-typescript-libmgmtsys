@@ -1,9 +1,24 @@
 import DashboardIcon from '../DashBoard/DashBoardIcon/DashBoardIcon';
 import './Menu.css'
 import { Link } from 'react-router-dom';
-
+import data from '../../data/data';
+import parse from "html-react-parser";
 
 const Menu = () => {
+    const defaultIconsData = data.defaultIconElements;
+
+    const displayLinks = () => {
+        return Object.values(defaultIconsData).map(icon => {
+            const { name, svg, link } = icon;
+            console.log(svg)
+            return(
+                <div className='icon'>
+                    {parse(svg)}
+                    <Link to={link}>{name}</Link>
+                </div>
+            )
+        })
+    }
 
     return(
         <div className="menu">
@@ -15,10 +30,8 @@ const Menu = () => {
                 <div className='horizontal-line'></div>
             </div>
             <div className='vertical-line'/>
-            <div className='links'>
-                <Link to='/DashBoard'><DashboardIcon /></Link>
-                <Link to='/Books'>Books</Link>
-                <Link to='/Members'>Members</Link>
+            <div className='icons'>
+                {displayLinks()}
             </div>
         </div>
     )

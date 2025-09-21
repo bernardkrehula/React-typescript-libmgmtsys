@@ -1,10 +1,16 @@
+import './MenuIcon.css'
 
-const MenuIcon = () => {
+type MenuIconType = {
+    name: string;
+    svg: SVGElement;
+}
+
+const MenuIcon = ({name, svg}: MenuIconType) => {
 
     return(
         <div className="dashboard-icon">
-                <svg className="dashboard-icon-svg" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="DashboardIcon"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"></path></svg>
-                <h1>Dashboard</h1>
+                {svg}
+                <h1>{name}</h1>
         </div>
     )
 }
