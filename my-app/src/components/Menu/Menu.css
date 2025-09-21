@@ -5,8 +5,22 @@
     align-items: center;
     padding-top: 10px;
     margin-right: 5px;
+    margin-left: 5px;
+    height: 100vh;
 }
-.menu svg{
+.menu button{
+    display: flex;
+    margin-top: auto;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px
+}
+.logout-svg{
+    height: 20px;
+    fill: rgb(25, 118, 210);
+}
+.logo-svg{
     height: 40px;
     width: 40px;
 }
@@ -23,6 +37,7 @@
 }
 .logo-content{
     display: flex;
+    gap: 10px;
 }
 .logo h1{
     font-weight: 500;
@@ -38,11 +53,26 @@
     margin-top: -200px;
     background-color: rgb(172, 172, 172);
 }
-.links{
+.icons{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-    font-size: 2rem;
-    margin-top: 10px;
+    gap: 20px;
+    font-size: 1.3rem;
+    margin-top: 25px;
+}
+.icon{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: uppercase;
+}
+.icon svg{
+    height: 22px;
+    fill: rgb(25, 118, 210);
+}
+.icon a{
+    text-decoration: none;
+    font-weight: 700;
+    color: rgb(25, 118, 210);
 }

@@ -15,3 +15,11 @@
 .btn:hover{
     filter: brightness(90%);
 }
+.logout{
+    width: 90%;
+    color: rgb(25, 118, 210);
+    background-color: white;
+    border: 1px solid rgb(25, 118, 210, 0.7);
+    border-radius: 5px;
+    box-shadow: none;
+}
