@@ -1,3 +1,4 @@
+import './Btn.css'
 import type { MouseEventHandler } from "react"
 
 type BtnTypes = {
