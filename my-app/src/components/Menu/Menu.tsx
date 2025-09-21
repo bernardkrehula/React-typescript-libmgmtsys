@@ -1,5 +1,7 @@
+import DashboardIcon from '../DashBoard/DashBoardIcon/DashBoardIcon';
 import './Menu.css'
 import { Link } from 'react-router-dom';
+
 
 const Menu = () => {
 
@@ -14,7 +16,7 @@ const Menu = () => {
             </div>
             <div className='vertical-line'/>
             <div className='links'>
-                <Link to='/'>Default Page</Link>
+                <Link to='/DashBoard'><DashboardIcon /></Link>
                 <Link to='/Books'>Books</Link>
                 <Link to='/Members'>Members</Link>
             </div>
