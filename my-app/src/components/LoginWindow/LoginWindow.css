@@ -20,10 +20,14 @@
     fill: white;
     margin-top: 40px;
 }
-.login-inputs{
+.login-inputs-btn{
     display: flex;
     margin-top: 30px;
     gap: 20px;
     flex-direction: column;
     padding: 0 25px;
+    margin-bottom: 30px;
+}
+.login-inputs-btn button{
+    margin-top: 10px;
 }

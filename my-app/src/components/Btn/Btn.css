@@ -1,0 +1,17 @@
+.btn{
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    background-color: rgb(25, 118, 210);
+    color: white;
+    padding: 10px;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    border-radius: 3px;
+    font-weight: 700;
+    box-shadow: 0 2px 20px 0px rgb(0, 0, 0, 0.3);
+    transition: 0.2s all;
+}
+.btn:hover{
+    filter: brightness(90%);
+}
