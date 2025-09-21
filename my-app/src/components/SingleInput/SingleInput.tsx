@@ -19,7 +19,10 @@ const SingleInput = ({variation, placeholder, value, onClick}: SingleInputType) 
     }
 
     return(
-        <input onClick={onClick} onMouseEnter={acitvateHover} onMouseLeave={deactivateHover} className={`single-input ${variation} ${isInputHovered ? 'hovered': ''}`} placeholder={placeholder} value={value}/>
+        <div className='input-area'>
+            <input onClick={onClick} onMouseEnter={acitvateHover} onMouseLeave={deactivateHover} className={`single-input ${variation} ${isInputHovered ? 'hovered': ''}`} placeholder={placeholder} value={value} required/>
+            <div className='label-line'>login</div>
+        </div>
     )   
 }
 

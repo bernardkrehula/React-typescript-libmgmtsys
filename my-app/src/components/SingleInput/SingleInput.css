@@ -1,13 +1,40 @@
+.input-area{
+    position: relative;
+}
 .single-input{
+    position: relative;
     padding: 15px 15px;
     font-size: 2rem;
     border: 1px solid rgb(193, 193, 193);
     border-radius: 4px;
+    background-color: transparent;
+    transition: 0.1s ease;
+    width: 100%;
 }
 .hovered{
     border-color: black;
 }
-.single-input:focus{
+.label-line{
+    position: absolute;
+    font-size: 2rem;
+    transition: 0.2s ease;
+    left: 15.5px;
+    top: 16px;
+    color: rgb(115, 115, 115);
+    background-color: white; 
+    padding: 0 5px; 
+    z-index: 2; 
+    pointer-events: none; 
+}
+
+.single-input:focus,
+.single-input:valid{
     outline: 1px solid rgb(25, 118, 210);
     border-color: rgb(25, 118, 210);
+}
+.single-input:focus + .label-line,
+.single-input:valid + .label-line{
+    font-size: 1.6rem;
+    color: rgb(25, 118, 210);
+    transform: translateY(-25px);
 }
