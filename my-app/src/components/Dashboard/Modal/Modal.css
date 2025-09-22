@@ -1,0 +1,21 @@
+.modal{
+    background-color: rgb(148, 148, 255);
+}
+.modal-content{
+    display: flex;
+}
+.modal-data{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+}
+.modal-svg{
+    background-color: greenyellow;
+    border-radius: 150px;
+    height: 50px;
+}
+.modal svg{
+    height: 50px;
+    padding: 5px;
+}

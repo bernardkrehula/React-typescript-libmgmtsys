@@ -1,5 +1,5 @@
 import './Dashboard.css'
-import Modal from './Modal';
+import Modal from './Modal/Modal';
 
 type DashBoardTypes = {
     data: Object;
