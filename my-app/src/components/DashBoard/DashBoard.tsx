@@ -1,10 +1,12 @@
+import './Dashboard.css'
 
-const DashBoard = () => {
+const Dashboard = () => {
     return(
-        <>
-           <h1>dasreswggdrf</h1> 
-        </>
+        <div className="dashboard">
+           <h1>Dashboard</h1> 
+           
+        </div>
     )
 }
 
-export default DashBoard;
+export default Dashboard;

@@ -10,7 +10,7 @@ const Menu = () => {
     const displayLinks = () => {
         return Object.values(defaultIconsData).map(icon => {
             const { name, svg, link } = icon;
-            
+            console.log(name)
             return(
                 <div className='icon'>
                     {parse(svg)}
