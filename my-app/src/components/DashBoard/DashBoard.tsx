@@ -9,12 +9,12 @@ const Dashboard = ({data}: DashBoardTypes) => {
     
     const displayModals = () => {
         return Object.values(data.defaultIconElements).reverse().map((icon, index) => {
-            const { name, svg, link } = icon;
+            const { name, svg, link, svgColor } = icon;
 
             const listsLength = data[name.toLowerCase()];
 
             if(listsLength) return(
-                <Modal key={index} name={name} svg={svg} link={link} length={listsLength.length}/>
+                <Modal key={index} name={name} svg={svg} link={link} svgColor={svgColor} length={listsLength.length}/>
             )
         })
     }

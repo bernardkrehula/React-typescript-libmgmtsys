@@ -1,21 +1,62 @@
 .modal{
-    background-color: rgb(148, 148, 255);
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    width: 200px;
+    height: 150px;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px 1px rgb(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 .modal-content{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .modal-data{
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    text-align: center;
+    gap: 15px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+.modal-data h2{
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.modal-data h3{
+    font-size: 2.4rem;
+    font-weight: 500;
 }
 .modal-svg{
     background-color: greenyellow;
     border-radius: 150px;
-    height: 50px;
+    height: 40px;
+    margin-left: 10px;
 }
-.modal svg{
-    height: 50px;
-    padding: 5px;
+.modal-svg svg{
+    height: 40px;
+    padding: 3px;
+    fill: white;
+}
+.modal-line{
+    height: 1px;
+    background-color: rgb(197, 197, 197);
+    margin-top: 15px;
+}
+.modal a{
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+.modal-link{
+    display: flex;
+    align-items: center;
+}
+.arrow{
+    height: 40px;
+    padding: 3px;
+    fill: rgb(149, 38, 149);
+    margin-left: -3px;
 }
