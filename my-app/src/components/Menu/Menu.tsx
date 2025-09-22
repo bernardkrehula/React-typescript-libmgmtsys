@@ -8,11 +8,11 @@ const Menu = () => {
     const defaultIconsData = data.defaultIconElements;
 
     const displayLinks = () => {
-        return Object.values(defaultIconsData).map(icon => {
+        return Object.values(defaultIconsData).map((icon, index) => {
             const { name, svg, link } = icon;
-            console.log(name)
+            
             return(
-                <div className='icon'>
+                <div className='icon' key={index}>
                     {parse(svg)}
                     <Link to={link}>{name}</Link>
                 </div>

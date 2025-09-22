@@ -27,7 +27,7 @@
 .horizontal-line{
     height: 1px;
     width: 115%;
-    background-color: rgb(172, 172, 172);
+    background-color: rgb(220, 220, 220);
 }
 .logo{
     display: flex;
@@ -51,7 +51,7 @@
     width: 1px;
     height: 150vh;
     margin-top: -200px;
-    background-color: rgb(172, 172, 172);
+    background-color: rgb(220, 220, 220);
 }
 .icons{
     display: flex;
