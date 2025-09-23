@@ -1,6 +1,7 @@
 import Btn from "../Btn/Btn";
 import './Members.css'
 import Member from "./Member/Member";
+import AddWindow from "../AddWindow/AddWindow";
 
 export type MemberType = {
     id: string;
@@ -17,7 +18,7 @@ type MembersType = {
 const Members = ({membersData}: MembersType) => {
 
     const DisplayMemebers = () => {
-        return membersData.map(singleMember => <Member singleMember={singleMember}/>)
+        return membersData.map((singleMember, index) => <Member key={index} singleMember={singleMember}/>)
     }
 
     return(
@@ -41,6 +42,7 @@ const Members = ({membersData}: MembersType) => {
                     {DisplayMemebers()} 
                 </tbody>
             </table>
+            <AddWindow />
         </div>
     )
 }
