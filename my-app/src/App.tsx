@@ -15,7 +15,7 @@ function App() {
   > = {
     Dashboard: {component: Dashboard, props: { data: libraryData}},
     Books: {component: Books, props: { booksData: libraryData.books }},
-    Members: {component: Members, props: { members: libraryData.members  }}
+    Members: {component: Members, props: { membersData: libraryData.members  }}
   }
   const [ userLogged, isUserLogged ] = useState(false);
 

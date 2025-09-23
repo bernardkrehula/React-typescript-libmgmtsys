@@ -2,7 +2,7 @@ import Btn from "../../Btn/Btn";
 import type { BookType } from "../Books";
 
 const Book = ({singleBook}: BookType) => {
-    console.log('radi')
+    
     const { id, title, author, status } = singleBook;
 
     return(
