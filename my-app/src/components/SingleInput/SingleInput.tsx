@@ -6,9 +6,10 @@ type SingleInputType = {
     placeholder: string;
     value: string | number;
     onClick: MouseEventHandler<HTMLInputElement>;
+    inputValue: string;
 }
 
-const SingleInput = ({variation, placeholder, value, onClick}: SingleInputType) => {
+const SingleInput = ({variation, placeholder, value, onClick, inputValue}: SingleInputType) => {
     const [ isInputHovered, setHovered ] = useState(false);
 
     const acitvateHover = () => {
@@ -21,7 +22,7 @@ const SingleInput = ({variation, placeholder, value, onClick}: SingleInputType) 
     return(
         <div className='input-area'>
             <input onClick={onClick} onMouseEnter={acitvateHover} onMouseLeave={deactivateHover} className={`single-input ${variation} ${isInputHovered ? 'hovered': ''}`} placeholder={placeholder} value={value} required/>
-            <div className='label-line'>login</div>
+            <div className='label-line'>{inputValue}</div>
         </div>
     )   
 }

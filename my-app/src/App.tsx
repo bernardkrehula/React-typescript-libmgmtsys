@@ -14,8 +14,8 @@ function App() {
   const componentsArray: Record<string, {component: React.ComponentType<any>; props?: Record<string, any>}
   > = {
     Dashboard: {component: Dashboard, props: { data: libraryData}},
-    Books: {component: Books, props: { booksData: libraryData.books }},
-    Members: {component: Members, props: { membersData: libraryData.members  }}
+    Books: {component: Books, props: { data: libraryData.books }},
+    Members: {component: Members, props: { data: libraryData.members  }}
   }
   const [ userLogged, isUserLogged ] = useState(false);
 

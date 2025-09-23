@@ -12,10 +12,10 @@ type BooksType = {
     booksData: BookType[];
 }
 
-const Books = ({booksData}: BooksType) => {
+const Books = ({data}: BooksType) => {
 
     const DisplayBooks = () => {
-        return booksData.map(singleBook => <Book singleBook={singleBook}/>) 
+        return data.map(singleBook => <Book singleBook={singleBook}/>) 
     }
 
     return(

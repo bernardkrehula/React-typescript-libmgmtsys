@@ -15,10 +15,10 @@ type MembersType = {
     membersData: MemberType;
 }
 
-const Members = ({membersData}: MembersType) => {
+const Members = ({data}: MembersType) => {
 
     const DisplayMemebers = () => {
-        return membersData.map((singleMember, index) => <Member key={index} singleMember={singleMember}/>)
+        return data.map((singleMember, index) => <Member key={index} singleMember={singleMember}/>)
     }
 
     return(
@@ -42,7 +42,7 @@ const Members = ({membersData}: MembersType) => {
                     {DisplayMemebers()} 
                 </tbody>
             </table>
-            <AddWindow />
+            <AddWindow data={data}/>
         </div>
     )
 }
