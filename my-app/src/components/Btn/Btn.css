@@ -23,3 +23,24 @@
     border-radius: 5px;
     box-shadow: none;
 }
+.add{
+    background-color: rgb(46, 125, 50);
+    padding: 12px 20px;
+    transition: 0.2s all;
+    width: fit-content;
+}
+.add:hover{
+    background-color: rgb(47, 118, 51);
+}
+.edit{
+    background-color: transparent;
+    box-shadow: none;
+    fill: orangered;
+    padding: 0;
+}
+.delete{
+    background-color: transparent;
+    box-shadow: none;
+    fill: rgb(211, 47, 47);
+    padding: 0;
+}

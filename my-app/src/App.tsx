@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import LoginWindow from './components/LoginWindow/LoginWindow'
 import data from './data/data'
 import Books from './components/Books/Books'
-import Dashboard from './components/Dashboard/DashBoard'
+import Dashboard from './components/Dashboard/Dashboard'
 import Members from './components/Members/Members'
 
 function App() {

@@ -1,0 +1,77 @@
+.books{
+    padding: 15px 30px;
+}
+.books-title{
+    display: flex;
+    gap: 30px;
+}
+.books h1{
+    font-size: 3.7rem;
+    font-weight: 500;
+}
+.books-list{
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+}
+.books-header{
+    padding: 17px;
+    background-color: rgb(224, 224, 224);
+}
+.books-filter tr{
+ padding: 17px;
+}
+.books-header th{
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: left;
+    padding-left: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.books-header th:first-child{
+    border-top-left-radius: 5px;
+}
+.books-header th:last-child{
+    border-top-right-radius: 5px;
+}
+.books-header th:nth-child(1) { width: 240px; }
+.books-header th:nth-child(2) { width: 450px; }
+.books-header th:nth-child(3) { width: 400px; }
+.books-header th:nth-child(4) { width: 270px; }
+
+.books-filter h2{
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+.books-body tr{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.132);
+    border-left: 1px solid rgba(128, 128, 128, 0.1);
+    border-right: 1px solid rgba(128, 128, 128, 0.1);
+}
+.books-body th, td{
+    padding-left: 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 1.5rem;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.btns{
+    display: flex;
+    gap: 10px;
+}
+.btns button{
+    width: 50px;
+    margin-left: -15px;
+}
+.edit-svg{
+    height: 30px;
+}
+.delete-svg{
+    height: 30px;
+}
+.books-body th:nth-child(1) { width: 240px; }
+.books-body td:nth-child(2) { width: 450px; }
+.books-body td:nth-child(3) { width: 400px; }
+.books-body td:nth-child(4) { width: 230px; }
