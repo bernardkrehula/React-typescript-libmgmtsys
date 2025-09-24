@@ -26,18 +26,20 @@ function App() {
       )
     })
   }
+  const removeBooks = (bookID) => {
+    setLibraryData(prev => ({...prev, books: prev.books.filter(book => book.id != bookID)}));
+  }
   const addNewMember = (newMember) => {
-    console.log(libraryData.members)
-      setLibraryData(prev => ({...prev, members: [...prev.members, newMember]}))
+    setLibraryData(prev => ({...prev, members: [...prev.members, newMember]}));
   }
   const removeMember = (memberID) => {
-    setLibraryData(prev => ({...prev, members: prev.members.filter(member => member.id != memberID)}))
+    setLibraryData(prev => ({...prev, members: prev.members.filter(member => member.id != memberID)}));
   }
 
   const componentsArray: Record<string, {component: React.ComponentType<any>; props?: Record<string, any>}
     > = {
       Dashboard: {component: Dashboard, props: { data: libraryData}},
-      Books: {component: Books, props: { data: libraryData.books }},
+      Books: {component: Books, props: { data: libraryData.books, removeBooks: removeBooks }},
       Members: {component: Members, props: { data: libraryData.members, removeMember: removeMember, addNewMember: addNewMember }}
     }
 
