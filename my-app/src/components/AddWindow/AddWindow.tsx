@@ -4,21 +4,23 @@ import Btn from '../Btn/Btn';
 import { useState } from 'react';
 
 const AddWindow = ({data, inputContentVariation, addNewMember, setClicked, title}) => {
+    const lastMember = data[data.length - 1];
+    const newId = Number(lastMember.id) + 1;
     const [ newMember, setNewMember ] = useState({
-        id: '',
+        id: newId,
         name: '',
         phone: '',
         email: '',
-        fine: '',
+        fine: 0,
     });
 
     const DisplayInputs = () => {
-        const lastMember = data[data.length - 1];
-        const newId = Number(lastMember.id) + 1;
-        
         return Object.entries(lastMember).map(([key, value]) => {
-            const inputValue = key === "id" ? newId : key;
-            
+            let inputValue;
+            inputValue = key === "id" ? newId : key;
+            if(key === 'name' || key === 'email' || key === 'phone') inputValue = `${key} *`
+            if(key === 'fine') inputValue = 0;
+         
             return(
                 <SingleInput key={key} keyName={key} inputValue={inputValue} inputContentVariation={inputContentVariation} setNewMemberValues={setNewMemberValues}></SingleInput>
             )

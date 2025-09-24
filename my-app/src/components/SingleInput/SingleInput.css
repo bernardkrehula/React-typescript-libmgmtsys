@@ -10,6 +10,7 @@
     background-color: transparent;
     transition: 0.1s ease;
     width: 100%;
+    padding-left: 22px;
 }
 .hovered{
     border-color: black;
@@ -38,8 +39,24 @@
     color: rgb(25, 118, 210);
     transform: translateY(-25px);
 }
+.single-input + .add-label-line{
+    font-size: 1.2rem;
+    color: rgb(160, 160, 160);
+    transform: translateY(-61px);
+    background-color: white;
+    width: fit-content;
+    margin-left: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
 .addMember{
     font-size: 1.7rem;
     margin-left: -5px;
     text-transform: capitalize;
+}
+.currency{
+    position: absolute;
+    font-size: 2rem;
+    top: 16px;
+    left: 10px;
 }

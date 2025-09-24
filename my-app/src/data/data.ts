@@ -72,28 +72,28 @@ const data = {
             name: 'John Doe',
             phone: '132-465-8791',
             email: 'john@doe.com',
-            fine: '0',
+            fine: 0,
         },
         {
             id: '102',
             name: 'Jane Doe',
             phone: '789-456-1123',
             email: 'janedoe@mail.com',
-            fine: '100',
+            fine: 100,
         },
         {
             id: '103',
             name: 'Anamika',
             phone: '456-132-4892',
             email: 'anamika@gmail.com',
-            fine: '40',
+            fine: 40,
         },
         {
             id: '104',
             name: 'Joe Shmoe',
             phone: '123-465-7890',
             email: 'joe@sc.co',
-            fine: '85',
+            fine: 85,
         }
     ],
     defaultIconElements: {
