@@ -29,6 +29,9 @@ function App() {
   const removeBooks = (bookID) => {
     setLibraryData(prev => ({...prev, books: prev.books.filter(book => book.id != bookID)}));
   }
+  const addNewBook = (newBook) => {
+    setLibraryData(prev => ({...prev, books: [...prev.members, newBook]}));
+  }
   const addNewMember = (newMember) => {
     setLibraryData(prev => ({...prev, members: [...prev.members, newMember]}));
   }
@@ -39,7 +42,7 @@ function App() {
   const componentsArray: Record<string, {component: React.ComponentType<any>; props?: Record<string, any>}
     > = {
       Dashboard: {component: Dashboard, props: { data: libraryData}},
-      Books: {component: Books, props: { data: libraryData.books, removeBooks: removeBooks }},
+      Books: {component: Books, props: { data: libraryData.books, removeBooks: removeBooks, addNewBook: addNewBook }},
       Members: {component: Members, props: { data: libraryData.members, removeMember: removeMember, addNewMember: addNewMember }}
     }
 

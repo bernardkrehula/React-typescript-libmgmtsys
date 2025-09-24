@@ -1,11 +1,13 @@
 .addWindow{
-    position: absolute;
-    transform: translate(540px, -230px);
+    position: fixed;
+    top: 180px;
+    left: 760px;
     border: 2px solid black;
     box-shadow: 0 0 20px 1000px rgb(0, 0, 0, 0.5);
     text-align: center;
     padding: 40px 60px;
     background-color: white;
+    z-index: 4;
 }
 .addWindow-content{
     display: flex;

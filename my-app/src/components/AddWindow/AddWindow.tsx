@@ -3,7 +3,7 @@ import './AddWindow.css'
 import Btn from '../Btn/Btn';
 import { useState } from 'react';
 
-const AddWindow = ({data, inputContentVariation, addNewMember, setClicked}) => {
+const AddWindow = ({data, inputContentVariation, addNewMember, setClicked, title}) => {
     const [ newMember, setNewMember ] = useState({
         id: '',
         name: '',
@@ -35,7 +35,7 @@ const AddWindow = ({data, inputContentVariation, addNewMember, setClicked}) => {
 
     return(
         <div className='addWindow'>
-            <h1>Add Member</h1>
+            <h1>Add {title}</h1>
             <div className='addWindow-content'>
                 {DisplayInputs()}
                 <Btn variation='add' onClick={handleAddClick}>Add member</Btn>

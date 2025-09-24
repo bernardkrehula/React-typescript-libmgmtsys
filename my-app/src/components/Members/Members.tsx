@@ -44,7 +44,7 @@ const Members = ({data, removeMember, addNewMember}: MembersType) => {
                     {DisplayMemebers()} 
                 </tbody>
             </table>
-            {isAddBtnClicked ? <AddWindow data={data} inputContentVariation='addMember' setClicked={setClicked} addNewMember={addNewMember} setLibraryData={setLibraryData}/> : ''}
+            {isAddBtnClicked ? <AddWindow data={data} title='Member' inputContentVariation='addMember' setClicked={setClicked} addNewMember={addNewMember}/> : ''}
         </div>
     )
 }
