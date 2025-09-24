@@ -16,18 +16,18 @@ type MembersType = {
     membersData: MemberType;
 }
 
-const Members = ({data, setLibraryData, addNewMember}: MembersType) => {
+const Members = ({data, removeMember, addNewMember}: MembersType) => {
     const [ isAddBtnClicked, setClicked ] = useState(false);
 
     const DisplayMemebers = () => {
-        return data.map((singleMember, index) => <Member key={index} singleMember={singleMember}/>)
+        return data.map((singleMember, index) => <Member key={index} removeMember={removeMember} singleMember={singleMember}/>)
     }
 
     return(
         <div className="members">
             <div className="members-title">
                 <h1>Members</h1>
-                <Btn variation="add" onClick={() =>setClicked(true)}>+ Add new member</Btn>
+                <Btn variation="add" onClick={() => setClicked(true)}>+ Add new member</Btn>
             </div>
             <table className="members-list">
                 <thead className="members-header">

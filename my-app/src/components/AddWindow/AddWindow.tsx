@@ -39,7 +39,7 @@ const AddWindow = ({data, inputContentVariation, addNewMember, setClicked}) => {
             <div className='addWindow-content'>
                 {DisplayInputs()}
                 <Btn variation='add' onClick={handleAddClick}>Add member</Btn>
-                <Btn variation='logout'>Cancel</Btn>
+                <Btn variation='logout' onClick={() => setClicked(false)}>Cancel</Btn>
             </div>
         </div>
     )

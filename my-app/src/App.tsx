@@ -11,9 +11,7 @@ import Members from './components/Members/Members'
 function App() {
   const [ libraryData, setLibraryData ] = useState(data);
   const defaultIconsData = data.defaultIconElements;
-  
   const [ userLogged, isUserLogged ] = useState(false);
-
 
   const displayRoute = () => {
     return Object.values(defaultIconsData).map(icon => {
@@ -32,12 +30,15 @@ function App() {
     console.log(libraryData.members)
       setLibraryData(prev => ({...prev, members: [...prev.members, newMember]}))
   }
+  const removeMember = (memberID) => {
+    setLibraryData(prev => ({...prev, members: prev.members.filter(member => member.id != memberID)}))
+  }
 
   const componentsArray: Record<string, {component: React.ComponentType<any>; props?: Record<string, any>}
     > = {
       Dashboard: {component: Dashboard, props: { data: libraryData}},
       Books: {component: Books, props: { data: libraryData.books }},
-      Members: {component: Members, props: { data: libraryData.members, setLibraryData: setLibraryData, addNewMember: addNewMember }}
+      Members: {component: Members, props: { data: libraryData.members, removeMember: removeMember, addNewMember: addNewMember }}
     }
 
   if(userLogged){
