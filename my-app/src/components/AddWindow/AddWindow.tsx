@@ -1,20 +1,36 @@
 import SingleInput from '../SingleInput/SingleInput';
 import './AddWindow.css'
 import Btn from '../Btn/Btn';
+import { useState } from 'react';
 
-const AddWindow = ({data}) => {
+const AddWindow = ({data, inputContentVariation, addNewMember, setClicked}) => {
+    const [ newMember, setNewMember ] = useState({
+        id: '',
+        name: '',
+        phone: '',
+        email: '',
+        fine: '',
+    });
 
     const DisplayInputs = () => {
-        const lastObject = data[data.length - 1];
-        const newId = Number(lastObject.id) + 1;
+        const lastMember = data[data.length - 1];
+        const newId = Number(lastMember.id) + 1;
         
-        return Object.entries(lastObject).map(([key, value]) => {
+        return Object.entries(lastMember).map(([key, value]) => {
             const inputValue = key === "id" ? newId : key;
-            console.log(inputValue)
+            
             return(
-                <SingleInput inputValue={inputValue}></SingleInput>
+                <SingleInput key={key} keyName={key} inputValue={inputValue} inputContentVariation={inputContentVariation} setNewMemberValues={setNewMemberValues}></SingleInput>
             )
         })
+    }
+    const setNewMemberValues = (e) => {
+        const { name, value } = e.target;
+        setNewMember(prev => ({...prev, [name]: value}))
+    }
+    const handleAddClick = () => {
+        setClicked(false);
+        addNewMember(newMember);
     }
 
     return(
@@ -22,7 +38,7 @@ const AddWindow = ({data}) => {
             <h1>Add Member</h1>
             <div className='addWindow-content'>
                 {DisplayInputs()}
-                <Btn variation='add'>Add member</Btn>
+                <Btn variation='add' onClick={handleAddClick}>Add member</Btn>
                 <Btn variation='logout'>Cancel</Btn>
             </div>
         </div>

@@ -38,3 +38,8 @@
     color: rgb(25, 118, 210);
     transform: translateY(-25px);
 }
+.addMember{
+    font-size: 1.7rem;
+    margin-left: -5px;
+    text-transform: capitalize;
+}

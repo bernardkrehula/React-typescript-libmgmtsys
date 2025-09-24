@@ -2,6 +2,7 @@ import Btn from "../Btn/Btn";
 import './Members.css'
 import Member from "./Member/Member";
 import AddWindow from "../AddWindow/AddWindow";
+import { useState } from "react";
 
 export type MemberType = {
     id: string;
@@ -15,7 +16,8 @@ type MembersType = {
     membersData: MemberType;
 }
 
-const Members = ({data}: MembersType) => {
+const Members = ({data, setLibraryData, addNewMember}: MembersType) => {
+    const [ isAddBtnClicked, setClicked ] = useState(false);
 
     const DisplayMemebers = () => {
         return data.map((singleMember, index) => <Member key={index} singleMember={singleMember}/>)
@@ -25,7 +27,7 @@ const Members = ({data}: MembersType) => {
         <div className="members">
             <div className="members-title">
                 <h1>Members</h1>
-                <Btn variation="add">+ Add new member</Btn>
+                <Btn variation="add" onClick={() =>setClicked(true)}>+ Add new member</Btn>
             </div>
             <table className="members-list">
                 <thead className="members-header">
@@ -42,7 +44,7 @@ const Members = ({data}: MembersType) => {
                     {DisplayMemebers()} 
                 </tbody>
             </table>
-            <AddWindow data={data}/>
+            {isAddBtnClicked ? <AddWindow data={data} inputContentVariation='addMember' setClicked={setClicked} addNewMember={addNewMember} setLibraryData={setLibraryData}/> : ''}
         </div>
     )
 }

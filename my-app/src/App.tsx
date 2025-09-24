@@ -1,7 +1,7 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
 import Menu from './components/Menu/Menu'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LoginWindow from './components/LoginWindow/LoginWindow'
 import data from './data/data'
 import Books from './components/Books/Books'
@@ -11,12 +11,7 @@ import Members from './components/Members/Members'
 function App() {
   const [ libraryData, setLibraryData ] = useState(data);
   const defaultIconsData = data.defaultIconElements;
-  const componentsArray: Record<string, {component: React.ComponentType<any>; props?: Record<string, any>}
-  > = {
-    Dashboard: {component: Dashboard, props: { data: libraryData}},
-    Books: {component: Books, props: { data: libraryData.books }},
-    Members: {component: Members, props: { data: libraryData.members  }}
-  }
+  
   const [ userLogged, isUserLogged ] = useState(false);
 
 
@@ -33,7 +28,17 @@ function App() {
       )
     })
   }
+  const addNewMember = (newMember) => {
+    console.log(libraryData.members)
+      setLibraryData(prev => ({...prev, members: [...prev.members, newMember]}))
+  }
 
+  const componentsArray: Record<string, {component: React.ComponentType<any>; props?: Record<string, any>}
+    > = {
+      Dashboard: {component: Dashboard, props: { data: libraryData}},
+      Books: {component: Books, props: { data: libraryData.books }},
+      Members: {component: Members, props: { data: libraryData.members, setLibraryData: setLibraryData, addNewMember: addNewMember }}
+    }
 
   if(userLogged){
     return(
