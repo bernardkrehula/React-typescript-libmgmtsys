@@ -11,7 +11,11 @@ import Members from './components/Members/Members'
 function App() {
   const [ libraryData, setLibraryData ] = useState(data);
   const defaultIconsData = data.defaultIconElements;
-  const [ userLogged, isUserLogged ] = useState(false);
+  const [ userLogged, setUserLogged ] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("auth") === "true") setUserLogged(true);
+  }, []);
 
   const displayRoute = () => {
     return Object.values(defaultIconsData).map(icon => {
@@ -46,10 +50,12 @@ function App() {
       Members: {component: Members, props: { data: libraryData.members, removeMember: removeMember, addNewMember: addNewMember }}
     }
 
-  if(userLogged){
+  
+
+  if(!userLogged){
     return(
       <>
-        <LoginWindow />
+        <LoginWindow loginInfo={data.defaultLoginInfo} setUserLogged={setUserLogged}/>
       </>
     )
   } 

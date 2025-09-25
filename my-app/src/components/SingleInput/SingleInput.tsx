@@ -1,41 +1,50 @@
-import './SingleInput.css'
-import { useState, type MouseEventHandler } from 'react'
+import './SingleInput.css';
+import { useState } from 'react';
 
 type SingleInputType = {
-    variation: string;
-    placeholder: string;
-    value: string | number;
-    onClick: MouseEventHandler<HTMLInputElement>;
-    inputValue: string;
-    inputContentVariation: string;
-}
+  keyName?: string;
+  variation: string; 
+  placeholder: string;
+  value: string | number;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputContentVariation?: string;
+};
 
-const SingleInput = ({  setNewMemberValues, keyName, variation, placeholder, value, onClick, inputValue, inputContentVariation}: SingleInputType) => {
-    const [ isInputHovered, setHovered ] = useState(false);
-    const [ changedValue, setChangedValue ] = useState(0);
-    const [ currencyValue, setCurrencyValue] = useState(0);
+const SingleInput = ({
+  keyName,
+  variation,
+  placeholder,
+  value,
+  onChange,
+  inputContentVariation,
+}: SingleInputType) => {
+  const [isHovered, setHovered] = useState(false);
 
-    const acitvateHover = () => {
-        setHovered(true);
-        console.log(value)
-    }
-    const deactivateHover = () => {
-        setHovered(false);
-    }
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const newValue = Number(e.target.value);
-        setChangedValue(newValue);
-    };
-
-    return(
-        <div className='input-area'>
-            {inputValue === 0 ? <div className='currency'>$</div> : ''}
-            <input name={keyName} value={inputValue === 0 ? currencyValue : value} onClick={handleOnChange} type={typeof inputValue === 'number' ? 'number' : 'text'} onChange={setNewMemberValues} onClick={onClick} onMouseEnter={acitvateHover} onMouseLeave={deactivateHover} className={`single-input ${variation} ${isInputHovered ? 'hovered': ''}`} placeholder={placeholder} required disabled={keyName === 'id'} min={0}/>
-            {keyName === 'id' ? <div className='add-label-line'>Membership No.</div> : ''}
-            {keyName === 'fine' ? <div className='add-label-line'>Fine due *</div> : ''}
-            <div className={`label-line ${inputContentVariation}`}>{inputValue != 0 ? inputValue : ''}</div>
+  return (
+    <div className="input-area">
+      {keyName === 'fine' && <div className="currency">$</div>}
+      <input
+        name={keyName}
+        className={`single-input ${variation} ${isHovered ? 'hovered' : ''}`}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        type={typeof value === 'number' ? 'number' : 'text'}
+        required
+        disabled={keyName === 'id'}
+        min={0}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      />
+      {keyName === 'id' && <div className="add-label-line">Membership No.</div>}
+      {keyName === 'fine' && <div className="add-label-line">Fine due *</div>}
+      {value !== 0 && (
+        <div className={`label-line ${inputContentVariation}`}>
+          {/* {value} */}
         </div>
-    )   
-}
+      )}
+    </div>
+  );
+};
 
 export default SingleInput;
