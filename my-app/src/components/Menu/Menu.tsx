@@ -4,7 +4,7 @@ import data from '../../data/data';
 import parse from "html-react-parser";
 import Btn from '../Btn/Btn';
 
-const Menu = () => {
+const Menu = ({setUserLogged}) => {
     const defaultIconsData = data.defaultIconElements;
 
     const displayLinks = () => {
@@ -18,6 +18,10 @@ const Menu = () => {
                 </div>
             )
         })
+    }
+    const handleLogout = () => {
+        localStorage.removeItem("auth");
+        setUserLogged(false);
     }
 
     return(
@@ -33,7 +37,7 @@ const Menu = () => {
             <div className='icons'>
                 {displayLinks()}
             </div>
-            <Btn variation='logout'>
+            <Btn variation='logout' onClick={handleLogout}>
                 Logout
                 <svg className="logout-svg" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="LogoutIcon"><path d="m17 7-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"></path></svg>
             </Btn>

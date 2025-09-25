@@ -63,7 +63,7 @@ function App() {
     return (
       <>
           <div className='main'>
-            <Menu /> 
+            <Menu setUserLogged={setUserLogged}/> 
             <div className='content'>
               <Routes>
                 {displayRoute()}
