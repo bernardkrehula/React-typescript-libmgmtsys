@@ -1,6 +1,10 @@
 import './Dashboard.css'
 import Modal from './Modal/Modal';
 
+//Maknuti broj books i members samo linkove ostaviti
+//Member brine o memberima i book o books
+
+
 type DataType = {
     defaultIconElements: {
         books: {
@@ -37,7 +41,7 @@ const Dashboard = ({data}: DashBoardTypes) => {
             )
         })
     }
-
+    
     return(
         <div className="dashboard">
            <h1>Dashboard</h1> 

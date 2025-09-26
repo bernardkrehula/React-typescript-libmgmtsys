@@ -15,11 +15,18 @@ type BooksType = {
 }
 
 const Books = ({data, removeBooks, addNewBook}: BooksType) => {
-    const [ isAddBtnClicked, setClicked ] = useState(false);
+    const [ isBtnClicked, setClicked ] = useState(false);
+    const [ editValue, setEditValue ] = useState({});
 
     const DisplayBooks = () => {
-        return data.map(singleBook => <Book singleBook={singleBook} removeBooks={removeBooks} addNewBook={addNewBook}/>) 
+        return data.map((singleBook, index) => <Book key={index} handleEdit={handleEdit} singleBook={singleBook} removeBooks={removeBooks} addNewBook={addNewBook}/>) 
     }
+
+    const handleEdit = (value) => {
+        setEditValue(value);
+        setClicked(true);
+    }
+
 
     return(
         <div className="books">
@@ -41,7 +48,7 @@ const Books = ({data, removeBooks, addNewBook}: BooksType) => {
                     {DisplayBooks()} 
                 </tbody>
             </table>
-            {isAddBtnClicked ? <AddWindow data={data} title='Book' inputContentVariation='addMember' setClicked={setClicked}/> : ''}
+            {isBtnClicked ? <AddWindow data={data} editValue={editValue} addNewBook={addNewBook} setClicked={setClicked} title='Book' inputContentVariation='addMember'/> : ''}
         </div>
     )
 }

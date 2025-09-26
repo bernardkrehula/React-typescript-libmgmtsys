@@ -1,7 +1,7 @@
 import type { MemberType } from "../Members";
 import Btn from "../../Btn/Btn";
 
-const Member = ({singleMember, removeMember}: MemberType) => {
+const Member = ({singleMember, removeMember, handleEdit}: MemberType) => {
     const { id, name, phone, email, fine } = singleMember;
 
     return(
@@ -12,7 +12,7 @@ const Member = ({singleMember, removeMember}: MemberType) => {
             <td>{email}</td>
             <td>${fine}</td>
             <td className="btns">
-                <Btn variation="edit">
+                <Btn variation="edit" onClick={() => handleEdit(singleMember)}>
                     <svg className="edit-svg" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="EditIcon"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></svg>
                 </Btn>
                 <Btn variation="delete" onClick={() => removeMember(id)}>

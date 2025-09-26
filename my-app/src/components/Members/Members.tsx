@@ -18,9 +18,15 @@ type MembersType = {
 
 const Members = ({data, removeMember, addNewMember}: MembersType) => {
     const [ isAddBtnClicked, setClicked ] = useState(false);
+    const [ editValue, setEditValue ] = useState(null);
 
     const DisplayMemebers = () => {
-        return data.map((singleMember, index) => <Member key={index} removeMember={removeMember} singleMember={singleMember}/>)
+        return data.map((singleMember, index) => <Member key={index} handleEdit={handleEdit} removeMember={removeMember} singleMember={singleMember}/>)
+    }
+
+    const handleEdit = (value) => {
+        setEditValue(value);
+        setClicked(true);
     }
 
     return(
@@ -44,7 +50,7 @@ const Members = ({data, removeMember, addNewMember}: MembersType) => {
                     {DisplayMemebers()} 
                 </tbody>
             </table>
-            {isAddBtnClicked ? <AddWindow data={data} title='Member' inputContentVariation='addMember' setClicked={setClicked} addNewMember={addNewMember}/> : ''}
+            {isAddBtnClicked ? <AddWindow data={data} title='Member' editValue={editValue} inputContentVariation='addMember' setClicked={setClicked} addNewMember={addNewMember}/> : ''}
         </div>
     )
 }
