@@ -28,25 +28,21 @@ type DashBoardTypes = {
 
 const Dashboard = ({data}: DashBoardTypes) => {
     
-    const displayModals = () => {
-        return Object.values(data.defaultIconElements).reverse().map((icon, index) => {
-            const { name, svg, link, svgColor } = icon;
-
-            const key = name.toLowerCase() as keyof typeof data;
-
-            const listsLength = data[key];
-
-            if(listsLength) return(
-                <Modal key={index} name={name} svg={svg} link={link} svgColor={svgColor} length={listsLength.length}/>
-            )
-        })
-    }
-    
     return(
         <div className="dashboard">
            <h1>Dashboard</h1> 
            <div className='options'>
-                {displayModals()}
+                {Object.values(data.defaultIconElements).reverse().map((icon, index) => {
+                    const { name, svg, link, svgColor } = icon;
+
+                    const key = name.toLowerCase() as keyof typeof data;
+
+                    const listsLength = data[key];
+
+                    if(listsLength) return(
+                        <Modal key={index} name={name} svg={svg} link={link} svgColor={svgColor} length={listsLength.length}/>
+                    )
+                })}
            </div>
         </div>
     )
