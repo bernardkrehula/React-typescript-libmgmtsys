@@ -20,8 +20,12 @@ const SingleInput = ({
   inputValue,
   onChange
 }: SingleInputType) => {
-  const [isHovered, setHovered] = useState(false);
+  const [ isHovered, setHovered ] = useState(false);
   const [ newValue, setValue ] = useState(value);
+
+ /*  useEffect(() => {
+    setValue(value);
+  },[value]) */
 
   const handleOnChange = (e) => {
     onChange(e);
@@ -35,7 +39,7 @@ const SingleInput = ({
         name={keyName}
         className={`single-input ${variation} ${isHovered ? "hovered" : ""}`}
         placeholder={placeholder}
-        value={keyName !== 'id' ? newValue : ''}
+        value={keyName !== 'id' ? (newValue ?? '') : ''}
         onChange={handleOnChange}
         type={typeof value === "number" ? "number" : "text"}
         required

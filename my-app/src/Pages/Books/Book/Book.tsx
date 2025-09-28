@@ -1,7 +1,5 @@
-import { useState } from "react";
 import Btn from "../../../components/Btn/Btn";
 import type { BookType } from "../Books";
-import AddWindow from "../../../components/AddWindow/AddWindow";
 
 const Book = ({ singleBook, removeBooks, handleEdit }: BookType) => {
   const { id, title, author, status } = singleBook;

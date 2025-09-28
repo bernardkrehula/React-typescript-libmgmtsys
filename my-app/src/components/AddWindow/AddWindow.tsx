@@ -3,7 +3,7 @@ import './AddWindow.css'
 import Btn from '../Btn/Btn';
 import { useState } from 'react';
 
-const AddWindow = ({data, inputContentVariation, addNewMember, addNewBook, setClicked, title, editValue}) => {
+const AddWindow = ({data, inputContentVariation, addNewMember, addNewBook, setClicked, title, editValue, resetEditValue}) => {
     
     const lastMember = data[data.length - 1];
     const newId = Number(lastMember.id) + 1;
@@ -27,10 +27,10 @@ const AddWindow = ({data, inputContentVariation, addNewMember, addNewBook, setCl
         if(editValue){
           return Object.entries(editValue).map(([key, value]) => {
             return(
-                <SingleInput key={key} keyName={key}  value={value} inputValue={value} inputContentVariation={inputContentVariation} onChange={setNewValues}></SingleInput>
+                <SingleInput key={key} keyName={key}  value={value} inputValue={key != 'id' ? key : value} inputContentVariation={inputContentVariation} onChange={setNewValues}></SingleInput>
             )
         })  
-        }
+        } 
         else{
             return Object.entries(lastMember).map(([key, value]) => {
             let inputValue;
@@ -42,19 +42,23 @@ const AddWindow = ({data, inputContentVariation, addNewMember, addNewBook, setCl
                 <SingleInput key={key} keyName={key} inputValue={inputValue} onChange={setNewValues} inputContentVariation={inputContentVariation} setNewValues={setNewValues}></SingleInput>
             )
         })
-        }     
+        }
     }
     const setNewValues = (e) => {
         const { name, value } = e.target;
         setNewMember(prev => ({...prev, [name]: value}));
         setNewBook(prev => ({...prev, [name]: value}));
     }
-    const handleAddClick = () => {
+    const handleClick = () => {
         setClicked(false);
         if(!editValue){
             if(title === 'Member') addNewMember(newMember);
             if(title === 'Book') addNewBook(newBook);
         }
+        setNewBook({})
+        console.log(editValue)
+        console.log(newBook, 'radi')
+        resetEditValue()
     }
 
     return(
@@ -62,7 +66,7 @@ const AddWindow = ({data, inputContentVariation, addNewMember, addNewBook, setCl
             <h1>Add {title}</h1>
             <div className='addWindow-content'>
                 {DisplayInputs()}
-                <Btn variation='add' onClick={handleAddClick}>Add {title}</Btn>
+                <Btn variation='add' onClick={handleClick}>{editValue ? 'Edit' : 'Add'} {title}</Btn>
                 <Btn variation='logout' onClick={() => setClicked(false)}>Cancel</Btn>
             </div>
         </div>

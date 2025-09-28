@@ -7,20 +7,24 @@ import data from "../../data/data";
 
 const Books = () => {
   const [ library, setLibrary ] = useState(data.books);
-  const [isBtnClicked, setClicked] = useState(false);
-  const [editValue, setEditValue] = useState({});
+  const [ isBtnClicked, setClicked ] = useState(false);
+  const [ editValue, setEditValue ] = useState(null);
 
   const removeBooks = (bookID: string) => {
     setLibrary((prev) => prev.filter((book) => book.id != bookID));
   };
-  const addNewBook = (newBook) => {
-    setLibrary((prev) => ({ ...prev, books: [...prev.books, newBook] }));
+  const addNewBook = (newBook: {id: string, title: string, author: string, status: string}) => {
+    console.log(newBook)
+    setLibrary((prev) => [...prev, newBook]);
   };
-
-  const handleEdit = (value) => {
-    setEditValue(value);
-    setClicked(true);
+/*   const editBook = (singleBook) => setLibrary(prev => prev.map(book => book.id === singleBook.id ? {})) 
+ */  
+  const handleEdit = (singleBook: string) => {
+      setEditValue(singleBook);
+/*     editBook(singleBook);
+ */    setClicked(true);
   };
+  const resetEditValue = () => setEditValue(null);
 
   return (
     <div className="books">
@@ -50,18 +54,16 @@ const Books = () => {
             />
           ))}</tbody>
       </table>
-      {isBtnClicked ? (
+      {isBtnClicked &&
         <AddWindow
-          data={data}
+          data={library}
           editValue={editValue}
           addNewBook={addNewBook}
           setClicked={setClicked}
+          resetEditValue={resetEditValue}
           title="Book"
           inputContentVariation="addMember"
-        />
-      ) : (
-        ""
-      )}
+        />}
     </div>
   );
 };
