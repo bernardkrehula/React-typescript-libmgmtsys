@@ -1,18 +1,18 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Menu from "./components/Menu/Menu";
+import Menu from "./Pages/Menu/Menu";
 import React, { useEffect, useState } from "react";
 import LoginWindow from "./components/LoginWindow/LoginWindow";
 import data from "./data/data";
-import Books from "./components/Books/Books";
-import Dashboard from "./components/Dashboard/Dashboard";
-import Members from "./components/Members/Members";
+import Books from "./Pages/Books/Books";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import Members from "./Pages/Members/Members";
 //Pojednostavi rute
-//Pogledaj zod validacija 
+//Pogledaj zod validacija
 //Za dodavanje knjiga i dodavanje membera napravi zod validaciju
 //Napravi validaciju tamo gdje je broj da baci error ukoliko to sto je korisnik upisao nije broj
 //Napravi validaciju da stringovi ne mogu da budu kraci od 3 slova
-//Ispod inputa gjde se baci error napisi to sto zood vrati 
+//Ispod inputa gjde se baci error napisi to sto zood vrati
 //
 
 function App() {
@@ -23,20 +23,6 @@ function App() {
   useEffect(() => {
     if (localStorage.getItem("auth") === "true") setUserLogged(true);
   }, []);
-
-  const displayRoute = () => {
-    return Object.values(defaultIconsData).map((icon) => {
-      const { name, link } = icon;
-      const ComponentData = componentsArray[name];
-      const { component: Components, props } = ComponentData;
-
-      return (
-        <>
-          <Route path={link} element={<Components {...props} />} />
-        </>
-      );
-    });
-  };
 
   //Premjestiti te funkcije u books, members
   const removeBooks = (bookID) => {
@@ -61,29 +47,6 @@ function App() {
     }));
   };
 
-  const componentsArray: Record<
-    string,
-    { component: React.ComponentType<any>; props?: Record<string, any> }
-  > = {
-    Dashboard: { component: Dashboard, props: { data: libraryData } },
-    Books: {
-      component: Books,
-      props: {
-        data: libraryData.books,
-        removeBooks: removeBooks,
-        addNewBook: addNewBook,
-      },
-    },
-    Members: {
-      component: Members,
-      props: {
-        data: libraryData.members,
-        removeMember: removeMember,
-        addNewMember: addNewMember,
-      },
-    },
-  };
-
   if (!userLogged) {
     return (
       <>
@@ -99,7 +62,11 @@ function App() {
         <div className="main">
           <Menu setUserLogged={setUserLogged} />
           <div className="content">
-            <Routes>{displayRoute()}</Routes>
+            <Routes>
+              <Route path="/Dashboard" element={<Dashboard data={libraryData} />} />
+              <Route path="/Books" element={<Books data={libraryData.books} removeBooks={removeBooks} addNewBook={addNewBook}/>} />
+              <Route path="/Members" element={<Members data={libraryData.members} removeMember={removeMember} addNewMember={addNewMember}/>} />
+            </Routes>
           </div>
         </div>
       </>

@@ -2,23 +2,11 @@ import "./Menu.css";
 import { Link } from "react-router-dom";
 import data from "../../data/data";
 import parse from "html-react-parser";
-import Btn from "../Btn/Btn";
+import Btn from "../../components/Btn/Btn";
 
 const Menu = ({ setUserLogged }) => {
   const defaultIconsData = data.defaultIconElements;
 
-  const displayLinks = () => {
-    return Object.values(defaultIconsData).map((icon, index) => {
-      const { name, svg, link } = icon;
-
-      return (
-        <div className="icon" key={index}>
-          {parse(svg)}
-          <Link to={link}>{name}</Link>
-        </div>
-      );
-    });
-  };
   const handleLogout = () => {
     localStorage.removeItem("auth");
     setUserLogged(false);
@@ -42,7 +30,18 @@ const Menu = ({ setUserLogged }) => {
         <div className="horizontal-line"></div>
       </div>
       <div className="vertical-line" />
-      <div className="icons">{displayLinks()}</div>
+      <div className="icons">
+        {Object.values(defaultIconsData).map((icon, index) => {
+          const { name, svg, link } = icon;
+
+          return (
+            <div className="icon" key={index}>
+              {parse(svg)}
+              <Link to={link}>{name}</Link>
+            </div>
+          );
+        })}
+        </div>
       <Btn variation="logout" onClick={handleLogout}>
         Logout
         <svg
