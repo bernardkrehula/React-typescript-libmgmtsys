@@ -17,12 +17,13 @@ const Books = () => {
     console.log(newBook)
     setLibrary((prev) => [...prev, newBook]);
   };
-/*   const editBook = (singleBook) => setLibrary(prev => prev.map(book => book.id === singleBook.id ? {})) 
- */  
-  const handleEdit = (singleBook: string) => {
+  const editBook = () => {        console.log(library, editValue)
+
+    setLibrary(prev => prev.map(book => book.id === editValue.id ? editValue : book)) } 
+ 
+  const handleEdit = (singleBook) => {
       setEditValue(singleBook);
-/*     editBook(singleBook);
- */    setClicked(true);
+      setClicked(true);
   };
   const resetEditValue = () => setEditValue(null);
 
@@ -61,6 +62,8 @@ const Books = () => {
           addNewBook={addNewBook}
           setClicked={setClicked}
           resetEditValue={resetEditValue}
+          editBook={editBook}
+          setEditValue={setEditValue}
           title="Book"
           inputContentVariation="addMember"
         />}
