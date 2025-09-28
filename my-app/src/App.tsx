@@ -16,7 +16,6 @@ import Members from "./Pages/Members/Members";
 //
 
 function App() {
-  const [libraryData, setLibraryData] = useState(data);
   const [userLogged, setUserLogged] = useState(false);
 
   useEffect(() => {
@@ -24,15 +23,7 @@ function App() {
   }, []);
 
   //Premjestiti te funkcije u books, members
-  const removeBooks = (bookID) => {
-    setLibraryData((prev) => ({
-      ...prev,
-      books: prev.books.filter((book) => book.id != bookID),
-    }));
-  };
-  const addNewBook = (newBook) => {
-    setLibraryData((prev) => ({ ...prev, books: [...prev.books, newBook] }));
-  };
+  
   const addNewMember = (newMember) => {
     setLibraryData((prev) => ({
       ...prev,
@@ -62,9 +53,9 @@ function App() {
           <Menu setUserLogged={setUserLogged} />
           <div className="content">
             <Routes>
-              <Route path="/Dashboard" element={<Dashboard data={libraryData} />} />
-              <Route path="/Books" element={<Books data={libraryData.books} removeBooks={removeBooks} addNewBook={addNewBook}/>} />
-              <Route path="/Members" element={<Members data={libraryData.members} removeMember={removeMember} addNewMember={addNewMember}/>} />
+              <Route path="/Dashboard" element={<Dashboard />} />
+              <Route path="/Books" element={<Books />} />
+              <Route path="/Members" element={<Members />} />
             </Routes>
           </div>
         </div>

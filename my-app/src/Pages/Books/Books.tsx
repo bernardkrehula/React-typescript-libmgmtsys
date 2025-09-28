@@ -3,31 +3,18 @@ import "./Books.css";
 import Btn from "../../components/Btn/Btn";
 import { useState } from "react";
 import AddWindow from "../../components/AddWindow/AddWindow";
+import data from "../../data/data";
 
-export type BookType = {
-  id: string;
-  title: string;
-  author: string;
-  status: string;
-};
-type BooksType = {
-  booksData: BookType[];
-};
-
-const Books = ({ data, removeBooks, addNewBook }: BooksType) => {
+const Books = () => {
+  const [ library, setLibrary ] = useState(data.books);
   const [isBtnClicked, setClicked] = useState(false);
   const [editValue, setEditValue] = useState({});
 
-  const DisplayBooks = () => {
-    return data.map((singleBook, index) => (
-      <Book
-        key={index}
-        handleEdit={handleEdit}
-        singleBook={singleBook}
-        removeBooks={removeBooks}
-        addNewBook={addNewBook}
-      />
-    ));
+  const removeBooks = (bookID: string) => {
+    setLibrary((prev) => prev.filter((book) => book.id != bookID));
+  };
+  const addNewBook = (newBook) => {
+    setLibrary((prev) => ({ ...prev, books: [...prev.books, newBook] }));
   };
 
   const handleEdit = (value) => {
@@ -53,7 +40,15 @@ const Books = ({ data, removeBooks, addNewBook }: BooksType) => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody className="books-body">{DisplayBooks()}</tbody>
+        <tbody className="books-body">{library.map((singleBook, index) => (
+            <Book
+              key={index}
+              handleEdit={handleEdit}
+              singleBook={singleBook}
+              removeBooks={removeBooks}
+              addNewBook={addNewBook}
+            />
+          ))}</tbody>
       </table>
       {isBtnClicked ? (
         <AddWindow
