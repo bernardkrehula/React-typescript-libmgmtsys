@@ -17,7 +17,6 @@ import Members from "./Pages/Members/Members";
 
 function App() {
   const [libraryData, setLibraryData] = useState(data);
-  const defaultIconsData = data.defaultIconElements;
   const [userLogged, setUserLogged] = useState(false);
 
   useEffect(() => {

@@ -1,39 +1,26 @@
 import './Dashboard.css'
 import Modal from './Modal/Modal';
-
+import data from '../../data/data';
 //Maknuti broj books i members samo linkove ostaviti
 //Member brine o memberima i book o books
 
-
-type DataType = {
-    defaultIconElements: {
-        books: {
-            name: string;
-            svg: string;
-            link: string;
-            svgColor: string;
-        },
-        members: {
-            name: string;
-            svg: string;
-            link: string;
-            svgColor: string;
-        }
-    }
+type IconType = {
+    name: string;
+    svg: string;
+    link: string;
+    svgColor?: string;
 }
 
-type DashBoardTypes = {
-    data: DataType;
-}
+const Dashboard = () => {
+    const icons = data.defaultIconElements;
 
-const Dashboard = ({data}: DashBoardTypes) => {
-    
     return(
         <div className="dashboard">
            <h1>Dashboard</h1> 
            <div className='options'>
-                {Object.values(data.defaultIconElements).reverse().map((icon, index) => {
+                {Object.values(icons).reverse().map((icon: IconType, index) => {
                     const { name, svg, link, svgColor } = icon;
+                    console.log(svgColor)
 
                     const key = name.toLowerCase() as keyof typeof data;
 
