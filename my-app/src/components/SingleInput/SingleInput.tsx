@@ -23,10 +23,6 @@ const SingleInput = ({
   const [ isHovered, setHovered ] = useState(false);
   const [ newValue, setValue ] = useState(value);
 
- /*  useEffect(() => {
-    setValue(value);
-  },[value]) */
-
   const handleOnChange = (e) => {
     onChange(e);
     setValue(e.target.value)

@@ -3,38 +3,26 @@ import "./Members.css";
 import Member from "./Member/Member";
 import AddWindow from "../../components/AddWindow/AddWindow";
 import { useState } from "react";
+import data from "../../data/data";
 
-export type MemberType = {
-  id: string;
-  name: string;
-  phone: string;
-  email: string;
-  fine: string;
-};
-
-type MembersType = {
-  membersData: MemberType;
-};
-
-const Members = ({ data, removeMember, addNewMember }: MembersType) => {
+const Members = () => {
+  const [ library, setLibrary ] = useState(data.members)
   const [isAddBtnClicked, setClicked] = useState(false);
   const [editValue, setEditValue] = useState(null);
 
-  const DisplayMemebers = () => {
-    return data.map((singleMember, index) => (
-      <Member
-        key={index}
-        handleEdit={handleEdit}
-        removeMember={removeMember}
-        singleMember={singleMember}
-      />
-    ));
+  const addNewMember = (newMember: {id: string, name: string, phone: string, email: string, fine: number}) => {
+    setLibrary((prev) => [...prev, newMember]);
   };
+  const removeMember = (memberID: string) => {
+    setLibrary((prev) => prev.filter((member) => member.id != memberID));
+  };
+  const editMember = () => setLibrary(prev => prev.map(member => member.id === editValue.id ? editValue : member));
 
   const handleEdit = (value) => {
     setEditValue(value);
     setClicked(true);
   };
+  const resetEditValue = () => setEditValue(null);
 
   return (
     <div className="members">
@@ -55,19 +43,28 @@ const Members = ({ data, removeMember, addNewMember }: MembersType) => {
             <th>Actions</th>
           </tr>
         </thead>
-        <tbody className="members-body">{DisplayMemebers()}</tbody>
+        <tbody className="members-body">{library.map((singleMember, index) => (
+          <Member
+            key={index}
+            handleEdit={handleEdit}
+            removeMember={removeMember}
+            singleMember={singleMember}
+          />
+        ))}</tbody>
       </table>
-      {isAddBtnClicked ? (
+      {isAddBtnClicked && (
         <AddWindow
-          data={data}
-          title="Member"
+          data={library}
           editValue={editValue}
-          inputContentVariation="addMember"
-          setClicked={setClicked}
           addNewMember={addNewMember}
+          setClicked={setClicked}
+          resetEditValue={resetEditValue}
+          editMember={editMember}
+          setEditValue={setEditValue}
+          editValue={editValue}
+          title="Member"
+          inputContentVariation="addMember"
         />
-      ) : (
-        ""
       )}
     </div>
   );

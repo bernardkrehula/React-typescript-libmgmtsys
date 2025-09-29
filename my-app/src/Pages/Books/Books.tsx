@@ -14,12 +14,9 @@ const Books = () => {
     setLibrary((prev) => prev.filter((book) => book.id != bookID));
   };
   const addNewBook = (newBook: {id: string, title: string, author: string, status: string}) => {
-    console.log(newBook)
     setLibrary((prev) => [...prev, newBook]);
   };
-  const editBook = () => {        console.log(library, editValue)
-
-    setLibrary(prev => prev.map(book => book.id === editValue.id ? editValue : book)) } 
+  const editBook = () => setLibrary(prev => prev.map(book => book.id === editValue.id ? editValue : book));
  
   const handleEdit = (singleBook) => {
       setEditValue(singleBook);
@@ -51,7 +48,6 @@ const Books = () => {
               handleEdit={handleEdit}
               singleBook={singleBook}
               removeBooks={removeBooks}
-              addNewBook={addNewBook}
             />
           ))}</tbody>
       </table>

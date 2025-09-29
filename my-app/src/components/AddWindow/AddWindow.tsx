@@ -3,7 +3,7 @@ import './AddWindow.css'
 import Btn from '../Btn/Btn';
 import { useState } from 'react';
 
-const AddWindow = ({data, inputContentVariation, addNewMember, addNewBook, setClicked, title, editValue, editBook, resetEditValue, setEditValue}) => {
+const AddWindow = ({data, inputContentVariation, editMember, addNewMember, addNewBook, setClicked, title, editValue, editBook, resetEditValue, setEditValue}) => {
     
     const lastMember = data[data.length - 1];
     const newId = Number(lastMember.id) + 1;
@@ -57,7 +57,8 @@ const AddWindow = ({data, inputContentVariation, addNewMember, addNewBook, setCl
             if(title === 'Book') addNewBook(newBook);
         }
         if(editValue){
-            editBook();
+            if(editBook) editBook();
+            if(editMember) editMember();
             resetEditValue();
         }
     }

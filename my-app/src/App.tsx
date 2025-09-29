@@ -24,19 +24,6 @@ function App() {
 
   //Premjestiti te funkcije u books, members
   
-  const addNewMember = (newMember) => {
-    setLibraryData((prev) => ({
-      ...prev,
-      members: [...prev.members, newMember],
-    }));
-  };
-  const removeMember = (memberID) => {
-    setLibraryData((prev) => ({
-      ...prev,
-      members: prev.members.filter((member) => member.id != memberID),
-    }));
-  };
-
   if (!userLogged) {
     return (
       <>
