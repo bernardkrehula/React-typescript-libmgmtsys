@@ -48,10 +48,9 @@ const AddWindow = ({data, inputContentVariation, editMember, addNewMember, addNe
         const { name, value } = e.target;
         setNewMember(prev => ({...prev, [name]: value}));
         setNewBook(prev => ({...prev, [name]: value}));
-      if(editValue) setEditValue(prev => ({...prev, [name]: value}));
+        if(editValue) setEditValue(prev => ({...prev, [name]: value}));
     }
     const handleClick = () => {
-        setClicked(false);
         if(!editValue){
             if(title === 'Member') addNewMember(newMember);
             if(title === 'Book') addNewBook(newBook);
@@ -59,6 +58,7 @@ const AddWindow = ({data, inputContentVariation, editMember, addNewMember, addNe
         if(editValue){
             if(editBook) editBook();
             if(editMember) editMember();
+            setClicked(false);
             resetEditValue();
         }
     }

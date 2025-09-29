@@ -1,13 +1,13 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Menu from "./Pages/Menu/Menu";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import LoginWindow from "./components/LoginWindow/LoginWindow";
 import data from "./data/data";
 import Books from "./Pages/Books/Books";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import Members from "./Pages/Members/Members";
-//Pojednostavi rute
+
 //Pogledaj zod validacija
 //Za dodavanje knjiga i dodavanje membera napravi zod validaciju
 //Napravi validaciju tamo gdje je broj da baci error ukoliko to sto je korisnik upisao nije broj
@@ -22,8 +22,6 @@ function App() {
     if (localStorage.getItem("auth") === "true") setUserLogged(true);
   }, []);
 
-  //Premjestiti te funkcije u books, members
-  
   if (!userLogged) {
     return (
       <>
