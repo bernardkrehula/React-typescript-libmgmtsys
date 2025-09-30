@@ -24,11 +24,13 @@ const SingleInput = ({
 }: SingleInputType) => {
   const [ isHovered, setHovered ] = useState(false);
   const [ newValue, setValue ] = useState(value);
-  const [status, setStatus] = useState("available");
+  const [status, setStatus] = useState(value);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     onChange(e);
+    setStatus(e.target.value);
+    console.log(value)
     setValue(value)
   }
  
@@ -61,10 +63,11 @@ const SingleInput = ({
           <div className="checkBtns">
             <label className="label-btn">
               <input
+                name={keyName}
                 type="radio"
-                value="available"
-                checked={status === "available"}
-                onChange={(e) => setStatus(e.target.value)}
+                value="Available"
+                checked={status === "Available"}
+                onChange={handleOnChange}
                 className="checkBtn"
               />
               <span>Available</span>
@@ -72,10 +75,11 @@ const SingleInput = ({
 
             <label className="label-btn">
               <input
+                name={keyName}
                 type="radio"
-                value="issued"
-                checked={status === "issued"}
-                onChange={(e) => setStatus(e.target.value)}
+                value="Issued"
+                checked={status === "Issued"}
+                onChange={handleOnChange}
                 className="checkBtn"
               />
               <span>Issued</span>

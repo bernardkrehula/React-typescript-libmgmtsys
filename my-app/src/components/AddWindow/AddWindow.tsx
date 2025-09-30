@@ -26,7 +26,6 @@ const AddWindow = ({data, inputContentVariation, editMember, isAddBtnClicked, ad
     const DisplayInputs = () => {
         if(editValue){
           return Object.entries(editValue).map(([key, value]) => {
-            console.log(editValue.fine)
            return(
                 <SingleInput key={key} keyName={key} isAddBtnClicked={isAddBtnClicked} value={value} inputValue={key === 'id' ? value : key === 'fine' ? '' : key} inputContentVariation={inputContentVariation} onChange={setNewValues}></SingleInput>
             )
@@ -40,7 +39,7 @@ const AddWindow = ({data, inputContentVariation, editMember, isAddBtnClicked, ad
             if(key === 'fine') inputValue = 0;
 
             return(
-                <SingleInput key={key} keyName={key} inputValue={inputValue} onChange={setNewValues} inputContentVariation={inputContentVariation} setNewValues={setNewValues}></SingleInput>
+                <SingleInput key={key} keyName={key} value={value} inputValue={inputValue} onChange={setNewValues} inputContentVariation={inputContentVariation} setNewValues={setNewValues}></SingleInput>
             )
         })
         }
