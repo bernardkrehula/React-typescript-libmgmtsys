@@ -19,9 +19,8 @@ const Members = () => {
     fine: z.string()
   })
 
-  const addNewMember = (newMember: {id: string, name: string, phone: string, email: string, fine: number}) => {
+  const addNewMember = (newMember: {id: number, name: string, phone: string, email: string, fine: number}) => {
     const result = FormScheme.safeParse(newMember);
-    console.log(newMember)
     if(!result.success){
       console.log('error')
     }
@@ -30,7 +29,7 @@ const Members = () => {
       setClicked(false)
     }
   };
-  const removeMember = (memberID: string) => {
+  const removeMember = (memberID: number) => {
     setLibrary((prev) => prev.filter((member) => member.id != memberID));
   };
   const editMember = () => setLibrary(prev => prev.map(member => member.id === editValue.id ? editValue : member));
@@ -77,10 +76,10 @@ const Members = () => {
           resetEditValue={resetEditValue}
           editMember={editMember}
           setEditValue={setEditValue}
-          editValue={editValue}
           setClicked={setClicked}
           title="Member"
           inputContentVariation="addMember"
+          isAddBtnClicked={isAddBtnClicked}
         />
       )}
     </div>

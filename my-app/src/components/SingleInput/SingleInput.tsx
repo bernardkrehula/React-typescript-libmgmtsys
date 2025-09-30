@@ -9,6 +9,7 @@ type SingleInputType = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputContentVariation?: string;
   inputValue: number;
+  isAddBtnClicked: string;
 };
 
 const SingleInput = ({
@@ -18,26 +19,28 @@ const SingleInput = ({
   value,
   inputContentVariation,
   inputValue,
-  onChange
+  onChange,
+  isAddBtnClicked
 }: SingleInputType) => {
   const [ isHovered, setHovered ] = useState(false);
   const [ newValue, setValue ] = useState(value);
 
   const handleOnChange = (e) => {
+    const { name, value } = e.target;
     onChange(e);
-    setValue(e.target.value)
+    setValue(value)
   }
  
   return (
     <div className="input-area">
-      {keyName === "fine" && <div className="currency">$</div>}
+      {keyName === 'fine' && <div className="currency">$</div>}
       <input
         name={keyName}
         className={`single-input ${variation} ${isHovered ? "hovered" : ""}`}
         placeholder={placeholder}
         value={keyName !== 'id' ? (newValue ?? '') : ''}
         onChange={handleOnChange}
-        type={typeof value === "number" ? "number" : "text"}
+        type={keyName === "fine" ? "number" : "text"}
         required
         disabled={keyName === "id"}
         min={0}
@@ -48,7 +51,7 @@ const SingleInput = ({
       {keyName === "fine" && <div className="add-label-line">Fine due *</div>}
       {value !== 0 && (
         <div className={`label-line ${inputContentVariation}`}>
-          {inputValue ? inputValue : keyName != 'fine' ? keyName : ''}
+          {inputValue || isAddBtnClicked ? inputValue : keyName != 'fine' ? keyName : value}
         </div>
       )}
     </div>

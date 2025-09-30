@@ -3,7 +3,7 @@ import './AddWindow.css'
 import Btn from '../Btn/Btn';
 import { useState } from 'react';
 
-const AddWindow = ({data, inputContentVariation, editMember, addNewMember, addNewBook, setClicked, title, editValue, editBook, resetEditValue, setEditValue}) => {
+const AddWindow = ({data, inputContentVariation, editMember, isAddBtnClicked, addNewMember, addNewBook, setClicked, title, editValue, editBook, resetEditValue, setEditValue}) => {
     
     const lastMember = data[data.length - 1];
     const newId = Number(lastMember.id) + 1;
@@ -26,8 +26,9 @@ const AddWindow = ({data, inputContentVariation, editMember, addNewMember, addNe
     const DisplayInputs = () => {
         if(editValue){
           return Object.entries(editValue).map(([key, value]) => {
-            return(
-                <SingleInput key={key} keyName={key}  value={value} inputValue={key != 'id' ? key : value} inputContentVariation={inputContentVariation} onChange={setNewValues}></SingleInput>
+            console.log(editValue.fine)
+           return(
+                <SingleInput key={key} keyName={key} isAddBtnClicked={isAddBtnClicked} value={value} inputValue={key === 'id' ? value : key === 'fine' ? '' : key} inputContentVariation={inputContentVariation} onChange={setNewValues}></SingleInput>
             )
         })  
         } 
@@ -48,7 +49,7 @@ const AddWindow = ({data, inputContentVariation, editMember, addNewMember, addNe
         const { name, value } = e.target;
         setNewMember(prev => ({...prev, [name]: value}));
         setNewBook(prev => ({...prev, [name]: value}));
-        if(editValue) setEditValue(prev => ({...prev, [name]: value}));
+        if(editValue) setEditValue(prev => ({...prev, [name]: name === 'fine' ? Number(value) : value }));
     }
     const handleClick = () => {
         if(!editValue){
