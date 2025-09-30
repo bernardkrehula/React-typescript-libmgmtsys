@@ -55,6 +55,7 @@ const AddWindow = ({data, inputContentVariation, editMember, isAddBtnClicked, ad
         if(!editValue){
             if(title === 'Member') addNewMember(newMember);
             if(title === 'Book') addNewBook(newBook);
+            setClicked(false);
         }
         if(editValue){
             if(editBook) editBook();
