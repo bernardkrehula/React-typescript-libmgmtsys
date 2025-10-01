@@ -26,6 +26,7 @@ const AddWindow = ({data, inputContentVariation, editMember, errors, isAddBtnCli
     const DisplayInputs = () => {
         if(editValue){
           return Object.entries(editValue).map(([key, value]) => {
+            console.log(editValue)
            return(
                 <SingleInput key={key} keyName={key} errors={errors[key]} isAddBtnClicked={isAddBtnClicked} value={value} inputValue={key === 'id' ? value : key === 'fine' ? '' : key} inputContentVariation={inputContentVariation} onChange={setNewValues}></SingleInput>
             )
@@ -48,7 +49,7 @@ const AddWindow = ({data, inputContentVariation, editMember, errors, isAddBtnCli
         const { name, value } = e.target;
         setNewMember(prev => ({...prev, [name]: name === 'fine' ? Number(value) : value}));
         setNewBook(prev => ({...prev, [name]: value}));
-        if(editValue) setEditValue(prev => ({...prev, [name]: name === 'fine' ? Number(value) : value }));
+        if(editValue) setEditValue(prev => ({...prev, [name]: name === 'fine' ? Number(value) : value}));
     }
     const handleClick = () => {
         if(!editValue){
@@ -58,8 +59,6 @@ const AddWindow = ({data, inputContentVariation, editMember, errors, isAddBtnCli
         if(editValue){
             if(editBook) editBook();
             if(editMember) editMember();
-            setClicked(false);
-            resetEditValue();
         }
     }
 

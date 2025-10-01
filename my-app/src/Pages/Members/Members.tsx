@@ -24,29 +24,40 @@ const Members = () => {
     .max(30, { message: "Email must not be longer than 30 characters." }),
   fine: z.number({ invalid_type_error: "Fine must be number" }).min(0, { message: "Fine can't be negative" })
 });
-
-  const addNewMember = (newMember: {id: number, name: string, phone: string, email: string, fine: number}) => {
-   
-    const result = FormScheme.safeParse(newMember);
+  const validateInputs = (member) => {
+    const result = FormScheme.safeParse(member);
 
     if(!result.success){
-        const fieldErrors: { [key: string]: string } = {};
-        result.error.issues.map(err => {
-        if(err.path[0]) fieldErrors[err.path[0] as string] = err.message;
-          });
-        setErrors(fieldErrors);
-        return;
-    }
-    else{
+            const fieldErrors: { [key: string]: string } = {};
+            result.error.issues.map(err => {
+            if(err.path[0]) fieldErrors[err.path[0] as string] = err.message;
+              });
+            setErrors(fieldErrors);
+            return;
+        }
+        else{
+          setErrors({})
+          return true;
+        }
+
+  }
+  const addNewMember = (newMember: {id: number, name: string, phone: string, email: string, fine: number}) => {
+   
+    if(validateInputs(newMember)){
       setLibrary((prev) => [...prev, newMember]);
-      setErrors({})
       setClicked(false)
     }
   };
   const removeMember = (memberID: number) => {
     setLibrary((prev) => prev.filter((member) => member.id != memberID));
   };
-  const editMember = () => setLibrary(prev => prev.map(member => member.id === editValue.id ? editValue : member));
+  const editMember = () => {
+    if(validateInputs(editValue)) {
+      setLibrary(prev => prev.map(member => member.id === editValue.id ? editValue : member));
+      setClicked(false);
+      resetEditValue();
+    }
+  };
 
   const handleEdit = (value) => {
     setEditValue(value);

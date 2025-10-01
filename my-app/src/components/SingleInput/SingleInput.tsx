@@ -22,8 +22,7 @@ const SingleInput = ({
   inputValue,
   onChange,
   isAddBtnClicked,
-  errors,
-  errorsVariation
+  errors
 }: SingleInputType) => {
   const [ isClicked, setClickedInput ] = useState(false);
   const [ isHovered, setHovered ] = useState(false);
@@ -60,7 +59,7 @@ const SingleInput = ({
         {keyName === "fine" && <div className="add-label-line">Fine due *</div>}
         {newValue !== 0 && (
           <div className={`label-line ${inputContentVariation} ${isClicked || value ? 'errors-input' : ''}`}>
-            {inputValue && isAddBtnClicked ? inputValue : keyName != 'fine' ? keyName : value}
+            {inputValue && isAddBtnClicked ? inputValue : ''}
           </div>
         )}
         {errors && <div className="input-error">{errors}</div>}
