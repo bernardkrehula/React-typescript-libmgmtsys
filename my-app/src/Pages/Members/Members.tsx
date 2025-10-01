@@ -5,7 +5,7 @@ import AddWindow from "../../components/AddWindow/AddWindow";
 import { useState } from "react";
 import data from "../../data/data";
 import z from "zod";
-//Staviti da se ne moze zatvoriti window prije nego sto se zadovolje svi uvjeti
+
 const Members = () => {
   const [ library, setLibrary ] = useState(data.members)
   const [isAddBtnClicked, setClicked] = useState(false);

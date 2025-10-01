@@ -5,8 +5,8 @@ import { useState } from 'react';
 
 const AddWindow = ({data, inputContentVariation, editMember, errors, isAddBtnClicked, addNewMember, addNewBook, setClicked, title, editValue, editBook, resetEditValue, setEditValue}) => {
     
-    const lastMember = data[data.length - 1];
-    const newId = Number(lastMember.id) + 1;
+    const lastObject = data[data.length - 1];
+    const newId = Number(lastObject.id) + 1;
     
     const [ newMember, setNewMember ] = useState({
         id: newId,
@@ -20,7 +20,7 @@ const AddWindow = ({data, inputContentVariation, editMember, errors, isAddBtnCli
         id: newId,
         title: '',
         author: '',
-        status: ''
+        status: 'Available'
     })
 
     const DisplayInputs = () => {
@@ -33,12 +33,14 @@ const AddWindow = ({data, inputContentVariation, editMember, errors, isAddBtnCli
         })  
         } 
         else{
-            return Object.entries(lastMember).map(([key, value]) => {
+            return Object.entries(lastObject).map(([key, value]) => {
             let inputValue;
-            inputValue = key === "id" ? newId : key;
+            
+            if(key === 'id') inputValue = newId;
             if(key === 'name' || key === 'email' || key === 'phone') inputValue = `${key} *`
-            if(key === 'fine') inputValue = 0;
-                
+            if(key === 'title' || key === 'author') inputValue = `${key} *`
+            if(key === 'fine') inputValue = '';
+            
             return(
                 <SingleInput key={key} keyName={key} errors={errors[key]} isAddBtnClicked={isAddBtnClicked} inputValue={inputValue} onChange={setNewValues} inputContentVariation={inputContentVariation} setNewValues={setNewValues}></SingleInput>
             )

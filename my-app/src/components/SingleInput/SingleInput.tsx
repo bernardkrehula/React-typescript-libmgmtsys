@@ -59,7 +59,7 @@ const SingleInput = ({
         {keyName === "fine" && <div className="add-label-line">Fine due *</div>}
         {newValue !== 0 && (
           <div className={`label-line ${inputContentVariation} ${isClicked || value ? 'errors-input' : ''}`}>
-            {inputValue && isAddBtnClicked ? inputValue : ''}
+            {inputValue || isAddBtnClicked ? inputValue : keyName != 'fine' ? keyName : ''}
           </div>
         )}
         {errors && <div className="input-error">{errors}</div>}
