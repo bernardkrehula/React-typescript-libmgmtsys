@@ -5,27 +5,41 @@ import AddWindow from "../../components/AddWindow/AddWindow";
 import { useState } from "react";
 import data from "../../data/data";
 import z from "zod";
-
+//Staviti da se ne moze zatvoriti window prije nego sto se zadovolje svi uvjeti
 const Members = () => {
   const [ library, setLibrary ] = useState(data.members)
   const [isAddBtnClicked, setClicked] = useState(false);
   const [editValue, setEditValue] = useState(null);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
   const FormScheme = z.object({
-    id: z.number(),
-    name: z.string().max(10).min(3),
-    phone: z.string().min(3),
-    email: z.string().max(30).min(10),
-    fine: z.string()
-  })
+  id: z.number(),
+  name: z.string()
+    .min(3, { message: "Name must have at least 3 characters" })
+    .max(10, { message: "The name must not be longer than 10 characters." }),
+  phone: z.string()
+    .min(10, { message: "Phone must have at least 10 characters" }),
+  email: z.string()
+    .min(10, { message: "Email must have at least 10 characters" })
+    .max(30, { message: "Email must not be longer than 30 characters." }),
+  fine: z.number({ invalid_type_error: "Fine must be number" }).min(0, { message: "Fine can't be negative" })
+});
 
   const addNewMember = (newMember: {id: number, name: string, phone: string, email: string, fine: number}) => {
+   
     const result = FormScheme.safeParse(newMember);
+
     if(!result.success){
-      console.log('error')
+        const fieldErrors: { [key: string]: string } = {};
+        result.error.issues.map(err => {
+        if(err.path[0]) fieldErrors[err.path[0] as string] = err.message;
+          });
+        setErrors(fieldErrors);
+        return;
     }
     else{
       setLibrary((prev) => [...prev, newMember]);
+      setErrors({})
       setClicked(false)
     }
   };
@@ -80,6 +94,7 @@ const Members = () => {
           title="Member"
           inputContentVariation="addMember"
           isAddBtnClicked={isAddBtnClicked}
+          errors={errors}
         />
       )}
     </div>

@@ -10,6 +10,7 @@ type SingleInputType = {
   inputContentVariation?: string;
   inputValue: number;
   isAddBtnClicked: string;
+  errors: string;
 };
 
 const SingleInput = ({
@@ -20,20 +21,22 @@ const SingleInput = ({
   inputContentVariation,
   inputValue,
   onChange,
-  isAddBtnClicked
+  isAddBtnClicked,
+  errors,
+  errorsVariation
 }: SingleInputType) => {
+  const [ isClicked, setClickedInput ] = useState(false);
   const [ isHovered, setHovered ] = useState(false);
   const [ newValue, setValue ] = useState(value);
-  const [status, setStatus] = useState(value);
+  const [status, setStatus] = useState(value || 'Available');
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     onChange(e);
     setStatus(e.target.value);
-    console.log(value)
     setValue(value)
   }
- 
+
   return (
     <div className="input-area">
       {keyName != 'status' ? <>
@@ -50,14 +53,18 @@ const SingleInput = ({
           min={0}
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
+          onClick={() => setClickedInput(true)}
         />
+        
         {keyName === "id" && <div className="add-label-line">Membership No.</div>}
         {keyName === "fine" && <div className="add-label-line">Fine due *</div>}
-        {value !== 0 && (
-          <div className={`label-line ${inputContentVariation}`}>
-            {inputValue || isAddBtnClicked ? inputValue : keyName != 'fine' ? keyName : value}
+        {newValue !== 0 && (
+          <div className={`label-line ${inputContentVariation} ${isClicked || value ? 'errors-input' : ''}`}>
+            {inputValue && isAddBtnClicked ? inputValue : keyName != 'fine' ? keyName : value}
           </div>
-        )}</>
+        )}
+        {errors && <div className="input-error">{errors}</div>}
+        </>
         :
         <>
           <div className="checkBtns">
